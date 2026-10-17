@@ -1,9 +1,9 @@
-document.addEventListener('DOMContentLoaded', function (){
+document.addEventListener('DOMContentLoaded', function () {
     const squares = document.querySelectorAll('#board div');
-    const gameState= ['', '', '', '', '', '', '', '', ''];
+    const gameState = ['', '', '', '', '', '', '', '', ''];
     let currentPlayer = 'X';
 
-    squares.forEach(function(square, index){
+    squares.forEach(function (square, index) {
         square.classList.add('square');
 
         square.addEventListener('click', function () {
@@ -12,6 +12,14 @@ document.addEventListener('DOMContentLoaded', function (){
             gameState[index] = currentPlayer;
 
             currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+        });
+
+        square.addEventListener('mouseover', function () {
+            square.classList.add('hover');
+        });
+
+        square.addEventListener('mouseout', function () {
+            square.classList.remove('hover');
         });
     });
 });
