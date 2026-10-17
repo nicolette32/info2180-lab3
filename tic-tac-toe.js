@@ -1,7 +1,9 @@
 document.addEventListener('DOMContentLoaded', function () {
     const squares = document.querySelectorAll('#board div');
     const status = document.getElementById('status');
-    const gameState = ['', '', '', '', '', '', '', '', ''];
+    const ButtonfornewGame = document.querySelector('.btn');
+    const defaultMessage = status.textContent;
+    let gameState = ['', '', '', '', '', '', '', '', ''];
     let currentPlayer = 'X';
 
     const combinations = [
@@ -18,6 +20,19 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }
         return null;
+    }
+
+    function startOveryourGame() {
+        gameState = ['', '', '', '', '', '', '', '', ''];
+        currentPlayer = 'X';
+
+        squares.forEach(function (square) {
+            square.textContent = '';
+            square.classList.remove('X', 'O', 'hover');
+        });
+
+        status.textContent = defaultMessage;
+        status.classList.remove('you-won');
     }
 
     squares.forEach(function (square, index) {
@@ -45,4 +60,6 @@ document.addEventListener('DOMContentLoaded', function () {
             square.classList.remove('hover');
         });
     });
+
+    ButtonfornewGame.addEventListener('click', startOveryourGame);
 });
