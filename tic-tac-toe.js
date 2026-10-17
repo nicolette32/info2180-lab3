@@ -39,6 +39,11 @@ document.addEventListener('DOMContentLoaded', function () {
         square.classList.add('square');
 
         square.addEventListener('click', function () {
+            if (gameState[index] !==''){
+                return;
+            }
+
+
             square.textContent = currentPlayer;
             square.classList.add(currentPlayer);
             gameState[index] = currentPlayer;
